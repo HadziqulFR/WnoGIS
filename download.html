@@ -1,234 +1,250 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WnoGIS - Maps Offline Kecamatan Wonosalam | KKN 11 UNWAHA 2026</title>
 
-<title>Download WnoGIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --primary:#255e42;
+            --primary-light:#e9f2ec;
+            --text-dark:#2c3e35;
+            --text-muted:#6b8576;
+            --bg:#f4f7f5;
+        }
 
-<style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
 
-:root{
---primary:#255e42;
---primary-light:#eef6f1;
---text:#26352d;
---muted:#6d7f73;
---bg:#f4f7f5;
-}
+        body{
+            background:var(--bg);
+            background-image:radial-gradient(#cddcd3 1px,transparent 1px);
+            background-size:24px 24px;
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
 
-body{
-background:var(--bg);
-background-image:radial-gradient(#d5dfd8 1px,transparent 1px);
-background-size:24px 24px;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
-}
+        .card{
+            background:#fff;
+            width:100%;
+            max-width:430px;
+            border-radius:24px;
+            padding:40px 30px;
+            text-align:center;
+            box-shadow:0 20px 45px rgba(0,0,0,.08);
+            animation:fade .6s ease;
+        }
 
-.card{
-background:#fff;
-width:100%;
-max-width:430px;
-border-radius:25px;
-padding:40px 30px;
-text-align:center;
-box-shadow:0 20px 45px rgba(0,0,0,.08);
-animation:fade .6s ease;
-}
+        @keyframes fade{
+            from{
+                opacity:0;
+                transform:translateY(25px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(25px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+        .logo-wrap{
+            width:130px;
+            height:130px;
+            margin:auto;
+            margin-bottom:20px;
+            background:var(--primary-light);
+            border-radius:50%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
 
-.logo-box{
-width:130px;
-height:130px;
-margin:auto;
-margin-bottom:20px;
-border-radius:50%;
-background:var(--primary-light);
-display:flex;
-align-items:center;
-justify-content:center;
-}
+        .logo{
+            width:90px;
+            height:90px;
+            object-fit:contain;
+        }
 
-.logo{
-width:90px;
-height:90px;
-object-fit:contain;
-}
+        h1{
+            color:var(--text-dark);
+            font-size:30px;
+            margin-bottom:10px;
+        }
 
-h1{
-font-size:30px;
-color:var(--text);
-margin-bottom:8px;
-}
+        .subtitle{
+            color:var(--text-muted);
+            line-height:1.7;
+            margin-bottom:30px;
+            font-size:15px;
+        }
 
-.subtitle{
-font-size:15px;
-line-height:1.7;
-color:var(--muted);
-margin-bottom:28px;
-}
+        .subtitle b{
+            color:var(--primary);
+        }
 
-.subtitle b{
-color:var(--primary);
-}
+        .grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:12px;
+            margin-bottom:30px;
+        }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-bottom:28px;
-}
+        .item{
+            background:#fafcfa;
+            border:1px solid #e4ece7;
+            border-radius:14px;
+            padding:14px;
+            text-align:left;
+        }
 
-.item{
-background:#fafcfa;
-border:1px solid #e3ebe5;
-padding:15px;
-border-radius:15px;
-text-align:left;
-}
+        .full{
+            grid-column:span 2;
+        }
 
-.item span{
-display:block;
-font-size:11px;
-text-transform:uppercase;
-color:#7f8f84;
-margin-bottom:4px;
-font-weight:600;
-}
+        .label{
+            font-size:11px;
+            color:#888;
+            text-transform:uppercase;
+            margin-bottom:5px;
+            display:block;
+        }
 
-.item strong{
-font-size:14px;
-color:var(--text);
-}
+        .value{
+            font-weight:600;
+            color:var(--text-dark);
+        }
 
-.full{
-grid-column:span 2;
-}
+        .btn{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:10px;
+            width:100%;
+            padding:18px;
+            background:var(--primary);
+            color:#fff;
+            text-decoration:none;
+            border-radius:50px;
+            font-size:17px;
+            font-weight:600;
+            transition:.3s;
+        }
 
-.btn{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-width:100%;
-padding:17px;
-background:var(--primary);
-color:#fff;
-text-decoration:none;
-font-weight:600;
-font-size:17px;
-border-radius:50px;
-transition:.3s;
-box-shadow:0 10px 25px rgba(37,94,66,.25);
-}
+        .btn:hover{
+            background:#1c4d35;
+            transform:translateY(-3px);
+            box-shadow:0 12px 25px rgba(37,94,66,.25);
+        }
 
-.btn:hover{
-background:#1c4d34;
-transform:translateY(-2px);
-}
+        .btn svg{
+            width:22px;
+            height:22px;
+            stroke:white;
+            fill:none;
+            stroke-width:2;
+        }
 
-.note{
-margin-top:22px;
-font-size:13px;
-color:var(--muted);
-line-height:1.7;
-}
+        .note{
+            margin-top:25px;
+            color:var(--text-muted);
+            font-size:13px;
+            line-height:1.8;
+        }
 
-.footer{
-margin-top:28px;
-padding-top:20px;
-border-top:1px dashed #d7e2db;
-font-size:12px;
-line-height:1.8;
-color:#8c9d92;
-}
+        .footer{
+            margin-top:28px;
+            padding-top:18px;
+            border-top:1px dashed #d6e3da;
+            color:#888;
+            font-size:12px;
+            line-height:1.7;
+        }
 
-.footer b{
-color:#55695d;
-}
+        .footer b{
+            color:#555;
+        }
 
-</style>
-
+    </style>
 </head>
+
 <body>
 
 <div class="card">
 
-<div class="logo-box">
-<img src="logo.png" class="logo" alt="Logo WnoGIS">
-</div>
+    <div class="logo-wrap">
+        <img src="logo.png" class="logo" alt="Logo WnoGIS">
+    </div>
 
-<h1>WnoGIS</h1>
+    <h1>WnoGIS</h1>
 
-<p class="subtitle">
-<b>Maps Offline Kecamatan Wonosalam</b><br>
-KKN 11 Wonosalam 2026<br>
-Universitas KH. A. Wahab Hasbullah
-</p>
+    <div class="subtitle">
+        <b>Maps Offline Kecamatan Wonosalam</b><br>
+        KKN 11 Wonosalam 2026<br>
+        Universitas KH. A. Wahab Hasbullah
+    </div>
 
-<div class="grid">
+    <div class="grid">
 
-<div class="item">
-<span>Versi</span>
-<strong>1.1</strong>
-</div>
+        <div class="item">
+            <span class="label">Versi</span>
+            <span class="value">1.1</span>
+        </div>
 
-<div class="item">
-<span>Platform</span>
-<strong>Android</strong>
-</div>
+        <div class="item">
+            <span class="label">Platform</span>
+            <span class="value">Android</span>
+        </div>
 
-<div class="item">
-<span>Ukuran</span>
-<strong>±55 MB</strong>
-</div>
+        <div class="item">
+            <span class="label">Ukuran</span>
+            <span class="value">±55 MB</span>
+        </div>
 
-<div class="item">
-<span>File</span>
-<strong>APK</strong>
-</div>
+        <div class="item">
+            <span class="label">Format</span>
+            <span class="value">APK</span>
+        </div>
 
-<div class="item full">
-<span>Mode</span>
-<strong>Offline GIS (Tanpa Internet)</strong>
-</div>
+        <div class="item full">
+            <span class="label">Mode</span>
+            <span class="value">Offline GIS (Tanpa Internet)</span>
+        </div>
 
-</div>
+    </div>
 
-<a class="btn"
-href="https://github.com/HadziqulFR/WnoGIS/releases/download/v1.1/WnoGISv2.apk">
-⬇ Download APK
-</a>
+    <!-- DOWNLOAD HANYA SAAT DIKLIK -->
+    <a class="btn"
+       href="https://github.com/HadziqulFR/WnoGIS/releases/download/v1.1/WnoGISv2.apk">
 
-<p class="note">
-Unduh aplikasi WnoGIS untuk menikmati layanan pemetaan wisata, UMKM, fasilitas umum, dan informasi Kecamatan Wonosalam secara offline tanpa memerlukan koneksi internet.
-</p>
+        <svg viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
 
-<div class="footer">
-<b>© 2026 KKN 11 Wonosalam</b><br>
-Universitas KH. A. Wahab Hasbullah
-</div>
+        Download APK
+
+    </a>
+
+    <div class="note">
+        Klik tombol <b>Download APK</b> untuk mengunduh aplikasi WnoGIS versi terbaru.
+        Aplikasi dapat digunakan secara offline untuk menampilkan peta dan informasi wisata Kecamatan Wonosalam.
+    </div>
+
+    <div class="footer">
+        <b>© 2026 KKN 11 Universitas KH. A. Wahab Hasbullah</b><br>
+        WnoGIS – Maps Offline Kecamatan Wonosalam
+    </div>
 
 </div>
 
