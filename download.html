@@ -27,7 +27,6 @@
             background:var(--bg);
             background-image:radial-gradient(#cddcd3 1px,transparent 1px);
             background-size:24px 24px;
-
             min-height:100vh;
             display:flex;
             justify-content:center;
@@ -154,11 +153,38 @@
             stroke-width:2;
         }
 
-        .note{
-            margin-top:25px;
-            color:var(--text-muted);
-            font-size:13px;
-            line-height:1.8;
+        /* Desain baru untuk Attention Box */
+        .alert-box {
+            margin-top: 25px;
+            background: #fdfaf0; /* Warna kuning sangat pudar */
+            border: 1px solid #e9dfb8;
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        .alert-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            stroke: #d9a01c; /* Warna ikon kuning kecoklatan */
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .alert-text {
+            font-size: 12.5px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .alert-text b {
+            color: #333;
         }
 
         .footer{
@@ -173,7 +199,6 @@
         .footer b{
             color:#555;
         }
-
     </style>
 </head>
 
@@ -194,51 +219,48 @@
     </div>
 
     <div class="grid">
-
         <div class="item">
             <span class="label">Versi</span>
             <span class="value">1.1</span>
         </div>
-
         <div class="item">
             <span class="label">Platform</span>
             <span class="value">Android</span>
         </div>
-
+        <!-- Ukuran diubah menjadi 26 MB -->
         <div class="item">
             <span class="label">Ukuran</span>
-            <span class="value">±55 MB</span>
+            <span class="value">±26 MB</span>
         </div>
-
         <div class="item">
             <span class="label">Format</span>
             <span class="value">APK</span>
         </div>
-
         <div class="item full">
             <span class="label">Mode</span>
             <span class="value">Offline GIS (Tanpa Internet)</span>
         </div>
-
     </div>
 
-    <!-- DOWNLOAD HANYA SAAT DIKLIK -->
-    <a class="btn"
-       href="https://github.com/HadziqulFR/WnoGIS/releases/download/v1.1/WnoGISv2.apk">
-
+    <a class="btn" href="https://github.com/HadziqulFR/WnoGIS/releases/download/v1.1/WnoGISv2.apk">
         <svg viewBox="0 0 24 24">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
-
         Download APK
-
     </a>
 
-    <div class="note">
-        Klik tombol <b>Download APK</b> untuk mengunduh aplikasi WnoGIS versi terbaru.
-        Aplikasi dapat digunakan secara offline untuk menampilkan peta dan informasi wisata Kecamatan Wonosalam.
+    <!-- Attention Box Minimalis -->
+    <div class="alert-box">
+        <svg class="alert-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <div class="alert-text">
+            <b>Attention:</b> Kuota internet hanya dibutuhkan saat proses unduh APK. Setelah diinstal, aplikasi dapat digunakan <b>100% offline</b>. Aplikasi ini khusus pengguna <b>Android</b>.
+        </div>
     </div>
 
     <div class="footer">
