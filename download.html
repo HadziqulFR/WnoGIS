@@ -1,267 +1,236 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WnoGIS - Maps Offline Kecamatan Wonosalam | KKN 11 UNWAHA 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #255e42; /* Forest Green - Tema Alam Wonosalam */
-            --primary-light: #e9f2ec;
-            --text-dark: #2c3e35;
-            --text-muted: #6b8576;
-            --bg-color: #f4f7f5;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<title>Download WnoGIS</title>
 
-        body {
-            /* Latar belakang bertekstur grid ala peta / koordinat GIS */
-            background-color: var(--bg-color);
-            background-image: radial-gradient(#cddcd3 1px, transparent 1px);
-            background-size: 24px 24px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 420px;
-            border-radius: 24px;
-            padding: 40px 32px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(37, 94, 66, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+<style>
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+:root{
+--primary:#255e42;
+--primary-light:#eef6f1;
+--text:#26352d;
+--muted:#6d7f73;
+--bg:#f4f7f5;
+}
 
-        .logo-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-        /* Lingkaran dekoratif di belakang logo */
-        .logo-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 140px;
-            height: 140px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            z-index: 1;
-        }
+body{
+background:var(--bg);
+background-image:radial-gradient(#d5dfd8 1px,transparent 1px);
+background-size:24px 24px;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            position: relative;
-            z-index: 2;
-        }
+.card{
+background:#fff;
+width:100%;
+max-width:430px;
+border-radius:25px;
+padding:40px 30px;
+text-align:center;
+box-shadow:0 20px 45px rgba(0,0,0,.08);
+animation:fade .6s ease;
+}
 
-        h1 {
-            font-size: 28px;
-            color: var(--text-dark);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 
-        .subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+.logo-box{
+width:130px;
+height:130px;
+margin:auto;
+margin-bottom:20px;
+border-radius:50%;
+background:var(--primary-light);
+display:flex;
+align-items:center;
+justify-content:center;
+}
 
-        .subtitle b {
-            color: var(--primary);
-            font-weight: 600;
-        }
+.logo{
+width:90px;
+height:90px;
+object-fit:contain;
+}
 
-        /* Spesifikasi Grid ala App Store */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
+h1{
+font-size:30px;
+color:var(--text);
+margin-bottom:8px;
+}
 
-        .spec-item {
-            background: #fafcfa;
-            border: 1px solid #e1ebe5;
-            padding: 14px 12px;
-            border-radius: 16px;
-            text-align: left;
-            transition: 0.3s;
-        }
+.subtitle{
+font-size:15px;
+line-height:1.7;
+color:var(--muted);
+margin-bottom:28px;
+}
 
-        .spec-item:hover {
-            border-color: var(--primary);
-            background: #ffffff;
-        }
+.subtitle b{
+color:var(--primary);
+}
 
-        .spec-label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            display: block;
-        }
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-bottom:28px;
+}
 
-        .spec-value {
-            font-size: 14px;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
+.item{
+background:#fafcfa;
+border:1px solid #e3ebe5;
+padding:15px;
+border-radius:15px;
+text-align:left;
+}
 
-        .spec-full {
-            grid-column: span 2;
-        }
+.item span{
+display:block;
+font-size:11px;
+text-transform:uppercase;
+color:#7f8f84;
+margin-bottom:4px;
+font-weight:600;
+}
 
-        /* Tombol Download */
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 16px;
-            background: var(--primary);
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 50px; /* Bentuk pill */
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(37, 94, 66, 0.2);
-        }
+.item strong{
+font-size:14px;
+color:var(--text);
+}
 
-        .btn:hover {
-            background: #1d4d35;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(37, 94, 66, 0.3);
-        }
+.full{
+grid-column:span 2;
+}
 
-        .btn svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+.btn{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+width:100%;
+padding:17px;
+background:var(--primary);
+color:#fff;
+text-decoration:none;
+font-weight:600;
+font-size:17px;
+border-radius:50px;
+transition:.3s;
+box-shadow:0 10px 25px rgba(37,94,66,.25);
+}
 
-        .note {
-            margin-top: 24px;
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.7;
-            padding: 0 10px;
-        }
+.btn:hover{
+background:#1c4d34;
+transform:translateY(-2px);
+}
 
-        .footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px dashed #d1dfd6;
-            font-size: 12px;
-            color: #9cb3a6;
-            line-height: 1.6;
-        }
+.note{
+margin-top:22px;
+font-size:13px;
+color:var(--muted);
+line-height:1.7;
+}
 
-        .footer b {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-    </style>
+.footer{
+margin-top:28px;
+padding-top:20px;
+border-top:1px dashed #d7e2db;
+font-size:12px;
+line-height:1.8;
+color:#8c9d92;
+}
+
+.footer b{
+color:#55695d;
+}
+
+</style>
+
 </head>
 <body>
 
 <div class="card">
-    
-    <div class="logo-container">
-        <!-- Pastikan file logo.png ada di folder yang sama -->
-        <img src="logo.png" class="logo" alt="Logo WnoGIS">
-    </div>
 
-    <h1>WnoGIS</h1>
-    <p class="subtitle">
-        <b>Maps Offline Kecamatan Wonosalam</b><br>
-        KKN 11 UNWAHA 2026
-    </p>
+<div class="logo-box">
+<img src="logo.png" class="logo" alt="Logo WnoGIS">
+</div>
 
-    <!-- Info Box yang diubah menjadi Grid -->
-    <div class="specs-grid">
-        <div class="spec-item">
-            <span class="spec-label">Versi</span>
-            <span class="spec-value">1.0</span>
-        </div>
-        <div class="spec-item">
-            <span class="spec-label">Platform</span>
-            <span class="spec-value">Android</span>
-        </div>
-        <div class="spec-item">
-            <span class="spec-label">Ukuran</span>
-            <span class="spec-value">±55 MB</span>
-        </div>
-        <div class="spec-item">
-            <span class="spec-label">Tipe File</span>
-            <span class="spec-value">APK</span>
-        </div>
-        <div class="spec-item spec-full">
-            <span class="spec-label">Mode Aplikasi</span>
-            <span class="spec-value">Offline GIS (Tanpa Internet)</span>
-        </div>
-    </div>
+<h1>WnoGIS</h1>
 
-    <!-- Tombol dengan Icon SVG -->
-    <a class="btn"
-   href="https://github.com/HadziqulFR/WnoGIS/releases/download/v1.1/WnoGISv2.apk"
-   download>
-    <svg viewBox="0 0 24 24">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-    </svg>
-    Download APK
-</a>
+<p class="subtitle">
+<b>Maps Offline Kecamatan Wonosalam</b><br>
+KKN 11 Wonosalam 2026<br>
+Universitas KH. A. Wahab Hasbullah
+</p>
 
-    <p class="note">
-        Unduh aplikasi WnoGIS untuk mengakses informasi lokasi, rute, dan pemetaan potensi alam Kecamatan Wonosalam tanpa memerlukan koneksi internet.
-    </p>
+<div class="grid">
 
-    <div class="footer">
-        <b>© 2026 Universitas KH. A. Wahab Hasbullah</b><br>
-        Developed & Mapped by KKN 11 Wonosalam
-    </div>
+<div class="item">
+<span>Versi</span>
+<strong>1.1</strong>
+</div>
+
+<div class="item">
+<span>Platform</span>
+<strong>Android</strong>
+</div>
+
+<div class="item">
+<span>Ukuran</span>
+<strong>±55 MB</strong>
+</div>
+
+<div class="item">
+<span>File</span>
+<strong>APK</strong>
+</div>
+
+<div class="item full">
+<span>Mode</span>
+<strong>Offline GIS (Tanpa Internet)</strong>
+</div>
 
 </div>
-<script>
-setTimeout(() => {
-    window.location.href = "https://github.com/HadziqulFR/WnoGIS/releases/download/v1.1/WnoGISv2.apk";
-}, 3000);
-</script>
+
+<a class="btn"
+href="https://github.com/HadziqulFR/WnoGIS/releases/download/v1.1/WnoGISv2.apk">
+⬇ Download APK
+</a>
+
+<p class="note">
+Unduh aplikasi WnoGIS untuk menikmati layanan pemetaan wisata, UMKM, fasilitas umum, dan informasi Kecamatan Wonosalam secara offline tanpa memerlukan koneksi internet.
+</p>
+
+<div class="footer">
+<b>© 2026 KKN 11 Wonosalam</b><br>
+Universitas KH. A. Wahab Hasbullah
+</div>
+
+</div>
+
 </body>
 </html>
